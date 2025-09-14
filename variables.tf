@@ -10,3 +10,9 @@ variable "bucket_name" {
   type        = string
   default     = "cloudfront-headers"
 }
+
+variable "env" {
+  description = "The environment to deploy resources in"
+  type        = string
+  default     = "dev"
+}

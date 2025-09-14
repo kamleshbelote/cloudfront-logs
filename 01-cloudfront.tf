@@ -71,7 +71,7 @@ resource "aws_cloudfront_distribution" "s3_distribution_frontend" {
     Environment = "Dev"
   }
   enabled             = true
-  is_ipv6_enabled     = true
+  is_ipv6_enabled     = false
   comment             = "CloudFront Distribution for S3 Frontend"
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
@@ -120,11 +120,17 @@ resource "aws_cloudfront_distribution" "s3_distribution_frontend" {
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     cache_policy_id            = aws_cloudfront_cache_policy.custom_cache_policy.id
 
-
+    // Add real-time logging for this path pattern
+    realtime_log_config_arn = aws_cloudfront_realtime_log_config.realtime_log.arn
 
   }
 
-  depends_on = [aws_s3_bucket_policy.frontend_policy]
+  depends_on = [
+    aws_s3_bucket_policy.frontend_policy,
+    aws_cloudfront_response_headers_policy.security_headers_policy,
+    aws_cloudfront_cache_policy.custom_cache_policy,
+    aws_cloudfront_realtime_log_config.realtime_log
+  ]
 }
 
 
