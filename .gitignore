@@ -13,3 +13,4 @@ override.tf.json
 .terragrunt-cache/
 .terraformrc
 terraform.rc
+.terraform.tfstate*
