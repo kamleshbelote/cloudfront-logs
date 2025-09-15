@@ -39,7 +39,8 @@ The Kinesis stream name is `cloudfront-stream-${var.env}`, e.g. `cloudfront-stre
 
 Console:
 
-https://console.aws.amazon.com/kinesis/home?region=${var.aws_region}#/streams/details?streamName=cloudfront-stream-${var.env}
+Example (replace `us-east-2` and `cloudfront-stream-dev` with your region and stream name if different):
+https://console.aws.amazon.com/kinesis/home?region=us-east-2#/streams/details?streamName=cloudfront-stream-dev
 
 CLI example:
 
